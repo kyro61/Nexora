@@ -15,7 +15,7 @@ export const WatchMovement: React.FC<WatchMovementProps> = ({
   isLuminescentMode = false
 }) => {
   const balanceWheelRef = useRef<THREE.Group>(null);
-  const hairspringRef = useRef<THREE.LineSegments>(null);
+  const hairspringRef = useRef<THREE.Group>(null);
   const escapeWheelRef = useRef<THREE.Group>(null);
   const fourthWheelRef = useRef<THREE.Group>(null);
   const thirdWheelRef = useRef<THREE.Group>(null);
@@ -243,8 +243,7 @@ export const WatchMovement: React.FC<WatchMovementProps> = ({
       <group position={[0, 0, 0.06 + gearOffsetZ]}>
         {/* Mainspring Barrel (Top Right) */}
         <group ref={barrelRef} position={[0.42, 0.38, 0]}>
-          <primitive object={barrelGeom} attach="geometry" />
-          <mesh material={materials.brassGold} castShadow receiveShadow />
+          <mesh geometry={barrelGeom} material={materials.brassGold} castShadow receiveShadow />
           {/* Central Arbor & Ratchet Cap */}
           <mesh position={[0, 0, 0.045]} material={materials.steelGear}>
             <cylinderGeometry args={[0.08, 0.08, 0.02, 24]} />
@@ -253,26 +252,22 @@ export const WatchMovement: React.FC<WatchMovementProps> = ({
 
         {/* Center Wheel (Middle) */}
         <group ref={centerWheelRef} position={[0, 0, 0.02]}>
-          <primitive object={centerGeom} attach="geometry" />
-          <mesh material={materials.brassGold} castShadow />
+          <mesh geometry={centerGeom} material={materials.brassGold} castShadow />
         </group>
 
         {/* Third Wheel */}
         <group ref={thirdWheelRef} position={[-0.28, 0.18, 0.035]}>
-          <primitive object={thirdGeom} attach="geometry" />
-          <mesh material={materials.brassGold} castShadow />
+          <mesh geometry={thirdGeom} material={materials.brassGold} castShadow />
         </group>
 
         {/* Fourth Wheel (Seconds Wheel) */}
         <group ref={fourthWheelRef} position={[-0.32, -0.22, 0.05]}>
-          <primitive object={fourthGeom} attach="geometry" />
-          <mesh material={materials.brassGold} castShadow />
+          <mesh geometry={fourthGeom} material={materials.brassGold} castShadow />
         </group>
 
         {/* Escapement Wheel (Steel / Silicon) */}
         <group ref={escapeWheelRef} position={[-0.12, -0.48, 0.065]}>
-          <primitive object={escapeGeom} attach="geometry" />
-          <mesh material={materials.steelGear} castShadow />
+          <mesh geometry={escapeGeom} material={materials.steelGear} castShadow />
         </group>
       </group>
 
@@ -368,9 +363,10 @@ export const WatchMovement: React.FC<WatchMovementProps> = ({
         </group>
 
         {/* Breathing Spiral Hairspring */}
-        <group position={[0, 0, -0.005]}>
-          <primitive ref={hairspringRef} object={hairspringGeometry} attach="geometry" />
-          <lineBasicMaterial color={isLuminescentMode ? '#00FFCC' : '#5F85A8'} linewidth={1.5} />
+        <group ref={hairspringRef} position={[0, 0, -0.005]}>
+          <lineSegments geometry={hairspringGeometry}>
+            <lineBasicMaterial color={isLuminescentMode ? '#00FFCC' : '#5F85A8'} linewidth={1.5} />
+          </lineSegments>
         </group>
       </group>
 

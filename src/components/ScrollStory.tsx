@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import {
   ChevronDown,
-  Sparkles,
   ArrowRight,
   Shield,
   Layers,
-  Compass,
   Sliders,
   Maximize2,
   ExternalLink,
   CheckCircle,
   Eye,
-  RotateCcw
+  RotateCcw,
+  Sparkles
 } from 'lucide-react';
 import { WATCH_COLLECTION, TECHNICAL_CALLOUTS, CRAFTSMANSHIP_PILLARS } from '../data/watchData';
 import { WatchModelSpec } from '../types';
@@ -45,51 +44,35 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
   scrollProgress,
   onResetCamera
 }) => {
-  const [selectedCallout, setSelectedCallout] = useState<string | null>(null);
   const [activeCraftTab, setActiveCraftTab] = useState(0);
 
   return (
     <div className="relative z-10 w-full pointer-events-none">
       {/* ========================================================================= */}
-      {/* SECTION 1: HERO — THE WATCH EMERGES                                       */}
+      {/* SCENE 01 — VOID (0.00 -> 0.08)                                            */}
+      {/* Starts in near darkness. Thin rim light revealing silhouette.              */}
       {/* ========================================================================= */}
       <section
-        id="hero-section"
+        id="scene-void"
         className="min-h-screen flex flex-col justify-between items-center text-center px-6 pt-32 pb-16 relative"
       >
-        <div className="relative z-20 flex flex-col items-center max-w-4xl mx-auto pt-6 space-y-4">
+        <div className="relative z-20 flex flex-col items-center max-w-4xl mx-auto pt-16 space-y-6">
           <div className="text-[10px] md:text-xs tracking-[0.8em] font-light text-[#B08D57] font-mono uppercase">
             CALIBRATING PRECISION
           </div>
 
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-light tracking-tight leading-none text-center text-[#D6D0C5] select-none drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
-            EVERY SECOND<br />
-            <span className="italic text-[#B08D57] font-normal">MATTERS.</span>
+          <h1 className="text-7xl sm:text-8xl md:text-9xl font-serif font-light tracking-[0.25em] leading-none text-[#D6D0C5] select-none drop-shadow-[0_10px_40px_rgba(0,0,0,0.95)]">
+            NOXORA
           </h1>
 
-          <div className="pt-2 flex items-center gap-3 text-[10px] font-mono tracking-[0.4em] text-[#D6D0C5]/60 uppercase">
-            <span className="w-8 h-[1px] bg-[#B08D57]/40" />
-            <span>SWISS MANUFACTURE D'HORLOGERIE</span>
-            <span className="w-8 h-[1px] bg-[#B08D57]/40" />
+          <div className="text-xs sm:text-sm md:text-base tracking-[0.6em] text-[#B08D57] font-mono uppercase pt-2">
+            TIME, REFINED
           </div>
         </div>
 
-        {/* Geometric Balance Radial Dial Accent */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] md:w-[540px] md:h-[540px] z-0 pointer-events-none opacity-40">
-          <div className="w-full h-full border-[8px] md:border-[12px] border-[#111] rounded-full shadow-[0_0_100px_rgba(0,0,0,1)] relative overflow-hidden bg-gradient-to-br from-[#1a1a1a]/50 to-[#070707]/70">
-            <div className="absolute top-0 left-0 w-full h-full bg-geometric-grid opacity-20" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center">
-              <div className="w-[1px] h-full bg-white opacity-5 absolute left-1/2" />
-              <div className="h-[1px] w-full bg-white opacity-5 absolute top-1/2" />
-              <div className="w-[80%] h-[80%] border border-[#B08D57] rounded-full opacity-10 border-dashed" />
-              <div className="absolute w-3.5 h-3.5 rounded-full bg-[#B08D57] shadow-[0_0_15px_#B08D57] z-30" />
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
+        {/* Scroll Prompt */}
         <div className="flex flex-col items-center space-y-3 pointer-events-auto z-20">
-          <div className="text-[9px] font-mono tracking-[0.35em] text-white/50 uppercase">
+          <div className="text-[9px] font-mono tracking-[0.35em] text-white/40 uppercase">
             SCROLL TO COMMENCE THE CINEMATIC JOURNEY
           </div>
           <div className="w-4 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
@@ -99,35 +82,72 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 2: ARCHITECTURE & SCULPTED CASE                                   */}
+      {/* SCENE 02 — FIRST REVEAL (0.08 -> 0.18)                                    */}
+      {/* Camera approaches, watch rotates ~25 deg, lighting sweeps across metal.   */}
       {/* ========================================================================= */}
       <section
-        id="case-section"
+        id="scene-reveal"
+        className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-24 relative"
+      >
+        <div className="max-w-4xl space-y-6 pointer-events-auto">
+          <div className="inline-block text-[10px] font-mono tracking-[0.4em] text-[#B08D57] uppercase bg-[#070707]/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#B08D57]/30">
+            01 / FIRST REVEAL
+          </div>
+
+          <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-light tracking-tight leading-tight text-[#D6D0C5] select-none drop-shadow-[0_15px_50px_rgba(0,0,0,0.95)]">
+            EVERY SECOND<br />
+            <span className="italic text-[#B08D57] font-normal">MATTERS.</span>
+          </h2>
+
+          <p className="text-sm md:text-base text-[#D6D0C5]/70 font-mono tracking-widest max-w-xl mx-auto uppercase">
+            Sculpted from proprietary alloys • Hand-chamfered mirror bevels
+          </p>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SCENE 03 — ORBIT (0.18 -> 0.30)                                           */}
+      {/* Camera orbits the watch: case thickness, crown, lugs, side profile.       */}
+      {/* ========================================================================= */}
+      <section
+        id="scene-orbit"
         className="min-h-screen flex items-center justify-start px-6 md:px-20 py-24"
       >
         <div className="max-w-lg bg-[#070707]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            01 / ARCHITECTURE
+            02 / SPATIAL ORBIT & ARCHITECTURE
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif tracking-wider text-white mt-2">
-            THE MONOLITHIC CHASSIS
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 mt-4 leading-relaxed">
-            Forged in grade 5 titanium and surgical 904L steel. Every facet is sculpted through 32 CNC passes, then brought to mirror finish by master polishers in our Geneva atelier.
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
+            Sculpted Geometry. Monobloc Strength.
+          </h3>
+          <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
+            The monobloc middle case is forged through cold-extrusion stamping at 300 tons, followed by seven-axis robotic micro-milling. Each lug curves seamlessly to fit the natural contours of the wrist.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
             <div>
-              <div className="text-xl font-serif text-[#B08D57]">41.0 MM</div>
+              <div className="text-xl font-serif text-[#B08D57]">{currentModel.caseDiameter}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-0.5">
                 Case Diameter
               </div>
             </div>
             <div>
-              <div className="text-xl font-serif text-[#B08D57]">10.8 MM</div>
+              <div className="text-xl font-serif text-[#B08D57]">{currentModel.caseThickness}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-0.5">
                 Slim Ergonomics
+              </div>
+            </div>
+            <div>
+              <div className="text-xl font-serif text-[#B08D57]">{currentModel.waterResistance}</div>
+              <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-0.5">
+                Water Resistance
+              </div>
+            </div>
+            <div>
+              <div className="text-xl font-serif text-[#B08D57]">Screwed Crown</div>
+              <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-0.5">
+                Hermetic Twin-Lock
               </div>
             </div>
           </div>
@@ -135,144 +155,73 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: THE SAPPHIRE PORTAL                                            */}
+      {/* SCENE 04 — ENTER THE WATCH (0.30 -> 0.42)                                 */}
+      {/* Camera moves toward dial, penetrates sapphire crystal into the movement.  */}
       {/* ========================================================================= */}
       <section
-        id="sapphire-section"
+        id="scene-crystal"
         className="min-h-screen flex items-center justify-end px-6 md:px-20 py-24"
       >
         <div className="max-w-lg bg-[#070707]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            02 / OPTICAL PURITY
+            03 / OPTICAL PENETRATION
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif tracking-wider text-white mt-2">
-            DOUBLE-DOMED SAPPHIRE
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 mt-4 leading-relaxed">
-            Pure synthetic corundum diamond-machined to 9 Mohs hardness. Seven layers of multi-spectral anti-reflective vapor coating guarantee absolute optical clarity from any viewing trajectory.
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
+            Double-Domed Sapphire Crystal.
+          </h3>
+          <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
+            Rated 9.0 on the Mohs hardness scale. Dual-sided multi-layer vacuum anti-reflective coating delivers pure optical clarity, inviting the viewer into the beating heart within.
           </p>
 
-          <div className="mt-6 flex items-center space-x-3 text-xs font-mono text-[#00FFAA] bg-[#00FFAA]/10 px-4 py-2.5 rounded-lg border border-[#00FFAA]/20">
-            <Sparkles className="w-4 h-4" />
-            <span>Grade X1 Super-LumiNova luminescence embedded underneath</span>
+          <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+            <span className="text-xs font-mono text-[#B08D57] tracking-widest uppercase">
+              ENTERING INTERNAL MECHANICAL HEART...
+            </span>
+            <ArrowRight className="w-4 h-4 text-[#B08D57] animate-pulse" />
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: THE ART OF PRECISION — WATCH DISASSEMBLY SEQUENCE             */}
+      {/* SCENE 05 — THE MECHANISM (0.42 -> 0.56)                                   */}
+      {/* Inside the movement. Gears rotate, balance oscillates, jewels glisten.    */}
       {/* ========================================================================= */}
       <section
-        id="precision-section"
+        id="scene-mechanism"
         className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-24"
       >
         <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-[#B08D57]/30 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            03 / THE ART OF PRECISION
-          </div>
-          <h2 className="text-3xl md:text-4xl font-serif tracking-wider text-white mt-2">
-            DISASSEMBLY SEQUENCE
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 mt-3 leading-relaxed">
-            As you navigate through the timepiece, all 180+ individual components physically separate along their mechanical axes to reveal the architecture beneath.
-          </p>
-
-          {/* Interactive Exploded View Slider */}
-          <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
-            <div className="flex items-center justify-between text-xs font-mono text-white/80">
-              <span className="text-[#B08D57] uppercase tracking-wider flex items-center space-x-2">
-                <Layers className="w-4 h-4" />
-                <span>EXPLODED DISASSEMBLY LEVEL</span>
-              </span>
-              <span className="text-white font-bold">{Math.round(disassemblyProgress * 100)}%</span>
-            </div>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={disassemblyProgress}
-              onChange={(e) => onSetDisassemblyProgress(parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#B08D57]"
-            />
-          </div>
-
-          {/* Component Quick Callouts */}
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {TECHNICAL_CALLOUTS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setSelectedCallout(selectedCallout === item.id ? null : item.id)}
-                className={`px-3 py-2 rounded-lg text-left text-[11px] font-mono border transition-all ${
-                  selectedCallout === item.id
-                    ? 'bg-[#B08D57]/20 border-[#B08D57] text-white shadow-[0_0_15px_rgba(176,141,87,0.3)]'
-                    : 'bg-white/[0.03] border-white/10 text-white/70 hover:border-white/30'
-                }`}
-              >
-                <div className="font-semibold truncate">{item.componentName}</div>
-                <div className="text-[9px] text-[#B08D57] truncate">{item.spec}</div>
-              </button>
-            ))}
-          </div>
-
-          {/* Callout Detail Description Box */}
-          {selectedCallout && (
-            <div className="mt-4 p-4 rounded-lg bg-[#B08D57]/10 border border-[#B08D57]/30 text-xs font-mono text-white/90 animate-fadeIn">
-              <div className="font-bold text-[#B08D57] mb-1">
-                {TECHNICAL_CALLOUTS.find((c) => c.id === selectedCallout)?.title}
-              </div>
-              <div className="text-white/70">
-                {TECHNICAL_CALLOUTS.find((c) => c.id === selectedCallout)?.description}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 5: MECHANICAL MOVEMENT EXPERIENCE (CALIBRE NX-901)               */}
-      {/* ========================================================================= */}
-      <section
-        id="movement-section"
-        className="min-h-screen flex flex-col justify-center items-end px-6 md:px-20 py-24"
-      >
-        <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] relative overflow-hidden">
-          <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
-          <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
             04 / THE MECHANICAL HEART
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif tracking-wider text-white mt-2">
-            CALIBRE NX-901
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 mt-3 leading-relaxed">
-            A manufacture automatic movement with free-sprung Glucydur balance wheel oscillating at 28,800 vibrations per hour (4Hz). Bi-directional ball-bearing winding rotor with 22k gold perimeter weight.
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
+            In-House Calibre NX-901 Engine.
+          </h3>
+          <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
+            At the center of NOXORA is the Glucydur balance wheel oscillating at 28,800 vibrations per hour (4 Hz). Paired with an anti-magnetic Breguet overcoil hairspring and 31 synthetic ruby jewel bearings, precision is maintained across all orientations.
           </p>
 
-          {/* Technical Telemetry Dashboard */}
           <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
-              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">72 HOURS</div>
+              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.powerReserve}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
                 POWER RESERVE
               </div>
             </div>
-
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
-              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">28,800 VPH</div>
+              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.frequency}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
-                BEAT FREQUENCY (4 HZ)
+                FREQUENCY (4 HZ)
               </div>
             </div>
-
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
-              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">31</div>
+              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.jewels}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
                 SYNTHETIC RUBY JEWELS
               </div>
             </div>
-
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
               <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">COSC</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
@@ -284,61 +233,101 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 6: CRAFTED BY HAND (EDITORIAL CRAFTSMANSHIP)                     */}
+      {/* SCENE 06 — EXPLODED WATCH (0.56 -> 0.68)                                   */}
+      {/* Physical 3D vector separation of watch components in alignment.            */}
       {/* ========================================================================= */}
       <section
-        id="craft-section"
+        id="scene-exploded"
+        className="min-h-screen flex flex-col justify-center items-end px-6 md:px-20 py-24"
+      >
+        <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] relative overflow-hidden">
+          <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
+          <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
+            05 / EXPLODED ARCHITECTURE
+          </div>
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
+            THE ART OF PRECISION.
+          </h3>
+          <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
+            Every component is engineered along precise geometric vectors. Sapphire crystal, cerachrom bezel, dial assembly, hands, calibre movement, case chassis, and exhibition caseback maintain perfect axial harmony.
+          </p>
+
+          <div className="space-y-3 mt-6 pt-6 border-t border-white/10">
+            {[
+              { num: '01', name: 'Sapphire Crystal (Double Domed)' },
+              { num: '02', name: 'Cerachrom Bezel Ring & Tachymeter' },
+              { num: '03', name: 'Faceted Hands & Sweeping Chrono Needle' },
+              { num: '04', name: 'Multi-Tiered Guilloché Dial Plate' },
+              { num: '05', name: 'Calibre NX-901 Mechanical Engine' },
+              { num: '06', name: 'Monobloc 904L / 18k Rose Gold Case' },
+              { num: '07', name: 'Exhibition Sapphire Caseback & Rotor' }
+            ].map((part, pIdx) => (
+              <div key={pIdx} className="flex items-center justify-between text-xs font-mono text-[#D6D0C5]/80 py-1 border-b border-white/5">
+                <span className="text-[#B08D57]">{part.num}</span>
+                <span>{part.name}</span>
+                <span className="text-[10px] text-white/40">Z-AXIS 3D</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SCENE 07 — CRAFTSMANSHIP (0.68 -> 0.78)                                   */}
+      {/* Watch reconstructs. Warm lighting. CRAFTED BY HAND editorial statements.   */}
+      {/* ========================================================================= */}
+      <section
+        id="scene-craft"
         className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-24"
       >
         <div className="max-w-3xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-14 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_90px_rgba(0,0,0,0.95)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            05 / SAVOIR-FAIRE
+            06 / SAVOIR-FAIRE & ATELIER
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif tracking-wider text-white mt-2">
+          <h3 className="text-4xl sm:text-5xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             CRAFTED BY HAND.
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 mt-3 leading-relaxed">
-            In our manufacture near Lake Geneva, our master watchmakers dedicate over 120 hours of manual decoration to every single timepiece before final casing.
+          </h3>
+          <p className="text-sm md:text-base text-[#D6D0C5]/80 font-light leading-relaxed mb-8">
+            Every NOXORA timepiece requires over 240 hours of manual decoration, hand-beveled chamfering, wooden wheel polishing, and master horologist calibration in our Geneva workshop.
           </p>
 
-          {/* Pillars Tab Selector */}
-          <div className="flex flex-wrap gap-2 mt-8 border-b border-white/10 pb-4">
+          {/* Craftsmanship Tabs */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6">
             {CRAFTSMANSHIP_PILLARS.map((pillar, idx) => (
               <button
                 key={pillar.number}
                 onClick={() => setActiveCraftTab(idx)}
-                className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all focus:outline-none ${
+                className={`text-left p-3 rounded-lg border transition-all duration-300 ${
                   activeCraftTab === idx
-                    ? 'bg-[#B08D57] text-[#070707] font-bold shadow-[0_0_15px_rgba(176,141,87,0.4)]'
-                    : 'bg-white/[0.04] text-white/70 hover:text-white'
+                    ? 'border-[#B08D57] bg-[#B08D57]/10 text-white'
+                    : 'border-white/5 bg-white/[0.02] text-white/50 hover:border-white/20'
                 }`}
               >
-                {pillar.number} {pillar.title}
+                <div className="text-[9px] font-mono text-[#B08D57]">{pillar.number}</div>
+                <div className="text-xs font-serif font-medium truncate mt-1">{pillar.title}</div>
               </button>
             ))}
           </div>
 
-          {/* Active Craftsmanship Feature */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            <div className="md:col-span-2 space-y-3">
-              <div className="text-sm font-serif text-[#B08D57] uppercase tracking-wider">
+          {/* Active Craftsmanship Detail Card */}
+          <div className="bg-white/[0.02] p-6 rounded-xl border border-white/5 flex flex-col md:flex-row gap-6 items-start justify-between">
+            <div className="space-y-2 max-w-lg">
+              <div className="text-xs font-mono text-[#B08D57] uppercase tracking-wider">
                 {CRAFTSMANSHIP_PILLARS[activeCraftTab].subtitle}
               </div>
-              <p className="text-xs md:text-sm text-white/80 leading-relaxed font-light">
+              <p className="text-sm text-[#D6D0C5]/80 font-light leading-relaxed">
                 {CRAFTSMANSHIP_PILLARS[activeCraftTab].text}
               </p>
-              <div className="text-[11px] font-mono text-white/50 pt-2 flex items-center space-x-2">
-                <CheckCircle className="w-3.5 h-3.5 text-[#B08D57]" />
-                <span>{CRAFTSMANSHIP_PILLARS[activeCraftTab].detail}</span>
+              <div className="text-xs text-white/40 italic pt-1">
+                {CRAFTSMANSHIP_PILLARS[activeCraftTab].detail}
               </div>
             </div>
-
-            <div className="bg-white/[0.03] p-6 rounded-xl border border-white/10 text-center">
-              <div className="text-3xl font-serif text-white font-bold">
+            <div className="text-right border-l border-white/10 pl-6 shrink-0">
+              <div className="text-3xl font-serif text-[#B08D57]">
                 {CRAFTSMANSHIP_PILLARS[activeCraftTab].stat}
               </div>
-              <div className="text-[10px] font-mono text-[#B08D57] uppercase tracking-widest mt-1">
+              <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
                 {CRAFTSMANSHIP_PILLARS[activeCraftTab].statLabel}
               </div>
             </div>
@@ -347,65 +336,67 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 7: THE COLLECTION — TIMEPIECE LINEUP                              */}
+      {/* SCENE 08 — COLLECTION (0.78 -> 0.88)                                      */}
+      {/* 3 luxury timepieces exist in the same 3D environment with camera focus.   */}
       {/* ========================================================================= */}
       <section
-        id="collection-section"
-        className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-24"
+        id="scene-collection"
+        className="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-24"
       >
-        <div className="max-w-6xl mx-auto w-full space-y-8 pointer-events-auto">
-          <div className="text-center space-y-2">
+        <div className="w-full max-w-6xl space-y-8 pointer-events-auto">
+          <div className="text-center space-y-3">
             <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-              06 / MANUFACTURE LINEAGE
+              07 / SPATIAL COLLECTION
             </div>
-            <h2 className="text-4xl md:text-6xl font-serif tracking-wider text-white uppercase">
-              THE COLLECTION
-            </h2>
-            <p className="text-xs md:text-sm font-mono text-white/60 max-w-xl mx-auto">
-              Select any creation to instantly switch the active 3D materials, finishes, and open its master specification sheet.
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#D6D0C5]">
+              THE TIMEPIECE ATELIER
+            </h3>
+            <p className="text-sm text-[#D6D0C5]/60 font-light max-w-xl mx-auto">
+              Three horological philosophies forged from 18k Rose Gold, DLC Grade 5 Titanium, and High-Frequency 904L Steel.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WATCH_COLLECTION.map((watch) => {
-              const isSelected = currentModel.id === watch.id;
+          {/* Timepiece Selection Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+            {WATCH_COLLECTION.slice(0, 3).map((watch) => {
+              const isSelected加快 = watch.id === currentModel.id;
               return (
                 <div
                   key={watch.id}
                   onClick={() => onSelectModel(watch.id)}
                   className={`bg-[#070707]/80 backdrop-blur-xl p-6 rounded-2xl border transition-all duration-500 cursor-pointer group flex flex-col justify-between hover:-translate-y-2 relative overflow-hidden ${
-                    isSelected
+                    isSelected加快
                       ? 'border-[#B08D57] shadow-[0_0_30px_rgba(176,141,87,0.3)] bg-[#111111]/90'
                       : 'border-white/10 hover:border-white/30'
                   }`}
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-mono tracking-widest text-[#B08D57] uppercase">
-                        {watch.caliber.split(' ')[1] || 'CALIBRE'}
+                      <span className="text-[10px] font-mono text-[#B08D57] uppercase tracking-widest">
+                        {watch.subtitle}
                       </span>
-                      {isSelected && (
-                        <span className="px-2 py-0.5 bg-[#B08D57] text-[#070707] text-[8px] font-mono font-bold tracking-wider rounded uppercase">
-                          ACTIVE 3D
+                      {isSelected加快 && (
+                        <span className="flex items-center text-[9px] font-mono text-[#B08D57] gap-1">
+                          <CheckCircle className="w-3 h-3" /> ACTIVE IN 3D
                         </span>
                       )}
                     </div>
 
-                    <div>
-                      <h3 className="text-xl font-serif tracking-wider text-white group-hover:text-[#B08D57] transition-colors">
-                        {watch.name}
-                      </h3>
-                      <div className="text-xs font-mono text-white/50 mt-1">{watch.subtitle}</div>
-                    </div>
+                    <h4 className="text-2xl font-serif text-[#D6D0C5] group-hover:text-white transition-colors">
+                      {watch.name}
+                    </h4>
 
-                    <p className="text-xs font-light text-white/70 line-clamp-3 leading-relaxed">
+                    <p className="text-xs text-[#D6D0C5]/70 font-light line-clamp-3 leading-relaxed">
                       {watch.tagline}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <div className="text-sm font-serif text-[#B08D57] font-semibold">
-                      {watch.price}
+                  <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                      <div className="text-lg font-serif text-[#B08D57]">{watch.price}</div>
+                      <div className="text-[9px] font-mono text-white/40 uppercase tracking-widest">
+                        {watch.caseMaterial.split(',')[0]}
+                      </div>
                     </div>
 
                     <button
@@ -413,10 +404,10 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
                         e.stopPropagation();
                         onOpenProductModal(watch);
                       }}
-                      className="text-xs font-mono text-white/60 hover:text-white flex items-center space-x-1 focus:outline-none"
+                      className="p-2 rounded-full border border-white/10 hover:border-[#B08D57] hover:text-[#B08D57] transition-colors"
+                      aria-label="View Specifications"
                     >
-                      <span>SPECS</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -427,133 +418,11 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 8: 3D INTERACTIVE STUDIO & TIMEPIECE CONFIGURATOR                */}
+      {/* SCENE 09 — FINAL HERO (0.88 -> 1.00)                                      */}
+      {/* Darkness surrounds watch. Final iconic commercial frame & luxury CTAs.    */}
       {/* ========================================================================= */}
       <section
-        id="configurator-section"
-        className="min-h-screen flex items-center justify-start px-6 md:px-20 py-24"
-      >
-        <div className="max-w-md bg-[#070707]/80 backdrop-blur-xl p-8 rounded-2xl border border-[#B08D57]/40 pointer-events-auto shadow-[0_30px_90px_rgba(0,0,0,0.95)] space-y-6 relative overflow-hidden">
-          <div className="w-12 h-[1px] bg-[#B08D57]" />
-          <div className="border-b border-white/10 pb-4">
-            <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase flex items-center space-x-2">
-              <Sliders className="w-3.5 h-3.5" />
-              <span>07 / 3D INTERACTIVE STUDIO</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-serif tracking-wider text-white mt-1">
-              FREE INSPECTION
-            </h2>
-            <p className="text-xs font-mono text-white/60 mt-1">
-              Manipulate camera angle, explore exploded movement anatomy, or enable night luminescence.
-            </p>
-          </div>
-
-          {/* Mode Controls */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={onToggleInspect}
-                className={`flex-1 py-3 px-4 rounded-xl text-xs font-mono tracking-wider border flex items-center justify-center space-x-2 transition-all ${
-                  isInspectMode
-                    ? 'bg-[#B08D57] border-[#B08D57] text-[#070707] font-bold shadow-[0_0_20px_rgba(176,141,87,0.4)]'
-                    : 'bg-white/[0.04] border-white/10 text-white/80 hover:border-white/30'
-                }`}
-              >
-                <Compass className="w-4 h-4" />
-                <span>{isInspectMode ? 'EXIT ORBIT' : 'DRAG TO ORBIT'}</span>
-              </button>
-
-              <button
-                onClick={onResetCamera}
-                title="Reset Camera"
-                className="ml-2 p-3 bg-white/[0.04] border border-white/10 hover:border-[#B08D57] rounded-xl text-white/70 hover:text-white transition-all"
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
-            </div>
-
-            <button
-              onClick={onToggleLume}
-              className={`w-full py-3 px-4 rounded-xl text-xs font-mono tracking-wider border flex items-center justify-center space-x-2 transition-all ${
-                isLuminescentMode
-                  ? 'bg-[#00FFAA]/20 border-[#00FFAA] text-[#00FFAA] shadow-[0_0_20px_rgba(0,255,170,0.4)]'
-                  : 'bg-white/[0.04] border-white/10 text-white/80 hover:border-white/30'
-              }`}
-            >
-              <Eye className="w-4 h-4" />
-              <span>{isLuminescentMode ? 'LUMINESCENCE ACTIVE' : 'TEST SUPER-LUMINOVA LUME'}</span>
-            </button>
-          </div>
-
-          {/* Exploded Disassembly Slider */}
-          <div className="space-y-2 pt-2 border-t border-white/10">
-            <div className="flex justify-between text-xs font-mono">
-              <span className="text-white/60">DISASSEMBLY OFFSET</span>
-              <span className="text-[#B08D57] font-bold">{Math.round(disassemblyProgress * 100)}%</span>
-            </div>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={disassemblyProgress}
-              onChange={(e) => onSetDisassemblyProgress(parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#B08D57]"
-            />
-          </div>
-
-          <div className="pt-2">
-            <button
-              onClick={() => onOpenConsultation(currentModel.id)}
-              className="w-full py-3.5 bg-[#B08D57] hover:bg-[#c29d63] text-[#070707] font-semibold text-xs font-mono tracking-[0.25em] uppercase rounded-full transition-all shadow-[0_0_25px_rgba(176,141,87,0.3)] focus:outline-none"
-            >
-              ORDER {currentModel.name}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 9: GENEVA HERITAGE & ATELIER JOURNAL                             */}
-      {/* ========================================================================= */}
-      <section
-        id="heritage-section"
-        className="min-h-screen flex items-center justify-end px-6 md:px-20 py-24"
-      >
-        <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] space-y-6 relative overflow-hidden">
-          <div className="w-12 h-[1px] bg-[#B08D57]" />
-          <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            08 / ATELIER JOURNAL
-          </div>
-          <h2 className="text-3xl md:text-4xl font-serif tracking-wider text-white">
-            THE CHRONOMETRY OF TIME
-          </h2>
-          <p className="text-xs md:text-sm font-light text-white/70 leading-relaxed">
-            Founded on the shores of Lake Geneva, NOXORA operates as an independent family manufacture dedicated to advancing chronometric stability through extreme mechanical precision.
-          </p>
-
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-xs font-mono">
-            <div>
-              <div className="text-[#D6D0C5] font-semibold">140-STEP TESTING</div>
-              <div className="text-white/50 text-[11px] mt-0.5">
-                Every movement undergoes 30 days of dynamic temperature and shock validation.
-              </div>
-            </div>
-            <div>
-              <div className="text-[#D6D0C5] font-semibold">5-YEAR GUARANTEE</div>
-              <div className="text-white/50 text-[11px] mt-0.5">
-                Full international manufacture warranty and complimentary periodic overhaul.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 10: FINAL CINEMATIC CLIMAX SEQUENCE                               */}
-      {/* ========================================================================= */}
-      <section
-        id="final-section"
+        id="scene-final"
         className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-24 relative"
       >
         <div className="max-w-3xl space-y-6 pointer-events-auto bg-[#070707]/70 backdrop-blur-xl p-8 md:p-14 rounded-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.95)] relative overflow-hidden">
@@ -562,43 +431,34 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
             NOXORA MANUFACTURE GENÈVE
           </div>
 
-          <h2 className="text-5xl sm:text-6xl md:text-8xl font-serif tracking-[0.15em] text-[#D6D0C5] uppercase">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif font-light text-[#D6D0C5] leading-tight">
             TIME DOESN'T WAIT.
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl font-light text-white/80 font-serif tracking-widest max-w-xl mx-auto">
-            DISCOVER YOUR TIMEPIECE.
+          <p className="text-base sm:text-lg text-[#D6D0C5]/80 font-light max-w-xl mx-auto leading-relaxed">
+            Discover your timepiece. Crafted for those who measure moments with unapologetic precision.
           </p>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <button
               onClick={() => onOpenConsultation(currentModel.id)}
-              className="w-full sm:w-auto px-10 py-4 bg-[#B08D57] hover:bg-[#c29d63] text-[#070707] font-semibold text-xs font-mono tracking-[0.25em] uppercase rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(176,141,87,0.4)] focus:outline-none"
+              className="w-full sm:w-auto px-8 py-4 bg-[#B08D57] text-[#070707] font-mono text-xs uppercase tracking-[0.25em] font-semibold rounded-full hover:bg-[#c49f69] transition-all duration-300 shadow-[0_0_30px_rgba(176,141,87,0.4)] flex items-center justify-center space-x-3 cursor-pointer"
             >
-              REQUEST PRIVATE CONSULTATION
+              <span>CONTACT NOXORA</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
-              onClick={() => {
-                const el = document.getElementById('collection-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full sm:w-auto px-10 py-4 border border-white/20 hover:border-[#B08D57] text-[#D6D0C5] hover:text-white font-mono text-xs tracking-[0.25em] uppercase rounded-full transition-all duration-300 focus:outline-none"
+              onClick={() => onOpenProductModal(currentModel)}
+              className="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#B08D57]/40 text-[#D6D0C5] font-mono text-xs uppercase tracking-[0.25em] rounded-full hover:border-[#B08D57] hover:text-white transition-all duration-300 flex items-center justify-center space-x-3 cursor-pointer"
             >
-              EXPLORE COLLECTION
+              <Maximize2 className="w-4 h-4 text-[#B08D57]" />
+              <span>EXPLORE COLLECTION</span>
             </button>
           </div>
 
-          {/* Minimalist Footnote */}
-          <div className="pt-12 text-[10px] font-mono text-white/40 tracking-widest flex items-center justify-center space-x-6">
-            <span>GENEVA</span>
-            <span>•</span>
-            <span>ZURICH</span>
-            <span>•</span>
-            <span>TOKYO</span>
-            <span>•</span>
-            <span>NEW YORK</span>
+          <div className="text-[9px] font-mono text-white/40 tracking-[0.3em] uppercase pt-4">
+            ALL TIMEPIECES BACKED BY A 5-YEAR INTERNATIONAL MANUFACTURE WARRANTY
           </div>
         </div>
       </section>

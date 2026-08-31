@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ArrowUpRight, Compass, Phone, MapPin, ShieldCheck, Clock } from 'lucide-react';
+import { X, ArrowUpRight } from 'lucide-react';
 import { WATCH_COLLECTION } from '../data/watchData';
 
 interface FullscreenMenuProps {
@@ -37,7 +37,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
 
         <button
           onClick={onClose}
-          className="p-3 rounded-full border border-white/10 text-[#D6D0C5] hover:text-white hover:border-[#B08D57] transition-all duration-300 focus:outline-none"
+          className="p-3 rounded-full border border-white/10 text-[#D6D0C5] hover:text-white hover:border-[#B08D57] transition-all duration-300 focus:outline-none cursor-pointer"
           aria-label="Close Menu"
         >
           <X className="w-4 h-4" />
@@ -49,19 +49,19 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
         {/* Navigation Sections */}
         <div className="lg:col-span-5 space-y-6">
           <div className="text-[11px] font-mono tracking-[0.3em] text-[#B08D57] uppercase">
-            EXPLORE EXPERIENCE
+            CINEMATIC TIMELINE
           </div>
           <div className="space-y-4">
             {[
-              { label: '01 / TIMEPIECE HERO', id: 'hero-section' },
-              { label: '02 / ARCHITECTURE & CASE', id: 'case-section' },
-              { label: '03 / SAPPHIRE PORTAL', id: 'sapphire-section' },
-              { label: '04 / ART OF PRECISION', id: 'precision-section' },
-              { label: '05 / CALIBRE NX-901', id: 'movement-section' },
-              { label: '06 / HAND CRAFTSMANSHIP', id: 'craft-section' },
-              { label: '07 / TIMEPIECE COLLECTION', id: 'collection-section' },
-              { label: '08 / 3D INTERACTIVE STUDIO', id: 'configurator-section' },
-              { label: '09 / GENEVA ATELIER', id: 'heritage-section' }
+              { label: '01 / VOID SILHOUETTE', id: 'scene-void' },
+              { label: '02 / FIRST REVEAL', id: 'scene-reveal' },
+              { label: '03 / SPATIAL ORBIT', id: 'scene-orbit' },
+              { label: '04 / SAPPHIRE PENETRATION', id: 'scene-crystal' },
+              { label: '05 / CALIBRE NX-901 MECHANISM', id: 'scene-mechanism' },
+              { label: '06 / EXPLODED ARCHITECTURE', id: 'scene-exploded' },
+              { label: '07 / ATELIER CRAFTSMANSHIP', id: 'scene-craft' },
+              { label: '08 / SPATIAL COLLECTION', id: 'scene-collection' },
+              { label: '09 / HERO FINALE', id: 'scene-final' }
             ].map((item) => (
               <button
                 key={item.id}
@@ -69,7 +69,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
                   onSelectSection(item.id);
                   onClose();
                 }}
-                className="block text-left text-xl md:text-2xl font-serif tracking-[0.1em] text-[#D6D0C5]/80 hover:text-white hover:translate-x-3 transition-all duration-300 focus:outline-none group"
+                className="block text-left text-xl md:text-2xl font-serif tracking-[0.1em] text-[#D6D0C5]/80 hover:text-white hover:translate-x-3 transition-all duration-300 focus:outline-none group cursor-pointer"
               >
                 <span className="group-hover:text-[#B08D57] transition-colors">{item.label}</span>
               </button>
@@ -80,7 +80,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
         {/* Collection Direct Select */}
         <div className="lg:col-span-4 space-y-6 border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-12">
           <div className="text-[11px] font-mono tracking-[0.3em] text-[#B08D57] uppercase">
-            THE CURRENT COLLECTION
+            THE ATELIER COLLECTION
           </div>
           <div className="space-y-4">
             {WATCH_COLLECTION.map((watch) => (
@@ -140,7 +140,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
                 onClose();
                 onOpenConsultation();
               }}
-              className="w-full py-3.5 bg-[#B08D57] hover:bg-[#c29d63] text-[#070707] font-semibold text-xs font-mono tracking-[0.25em] uppercase rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(176,141,87,0.3)] focus:outline-none"
+              className="w-full py-3.5 bg-[#B08D57] hover:bg-[#c29d63] text-[#070707] font-semibold text-xs font-mono tracking-[0.25em] uppercase rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(176,141,87,0.3)] focus:outline-none cursor-pointer"
             >
               BOOK PRIVATE SALON
             </button>

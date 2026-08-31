@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import { Scene } from './three/Scene';
 import { Navigation } from './components/Navigation';
@@ -20,7 +20,7 @@ export default function App() {
   const [isLuminescentMode, setIsLuminescentMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  
+
   // Modals
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [consultationModelId, setConsultationModelId] = useState('aurelis');
@@ -33,7 +33,7 @@ export default function App() {
 
   const currentModel = WATCH_COLLECTION.find((w) => w.id === currentModelId) || WATCH_COLLECTION[0];
 
-  // Initialize Lenis Smooth Scroll
+  // Initialize Lenis Smooth Scroll & Master Timeline Sync
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -56,14 +56,14 @@ export default function App() {
         const progress = Math.min(1, Math.max(0, window.scrollY / totalScroll));
         setScrollProgress(progress);
 
-        // Map scroll progress to automatic disassembly in the movement section (0.45 - 0.70)
+        // Map scroll progress to Scene 06 Exploded Watch (0.56 -> 0.68)
         if (!isInspectMode) {
-          if (progress >= 0.45 && progress <= 0.70) {
-            const rangeProgress = (progress - 0.45) / 0.25;
-            // Peak at 0.58, then smoothly reconstruct
+          if (progress >= 0.56 && progress <= 0.72) {
+            const rangeProgress = (progress - 0.56) / 0.16;
+            // Expand to peak at 0.62, then reconstruct by 0.72 (Scene 07 Craftsmanship)
             const explode = rangeProgress < 0.5 ? rangeProgress * 2 : (1 - rangeProgress) * 2;
-            setDisassemblyProgress(explode);
-          } else if (progress < 0.45 || progress > 0.75) {
+            setDisassemblyProgress(Math.max(0, Math.min(1, explode)));
+          } else {
             setDisassemblyProgress(0);
           }
         }
@@ -123,6 +123,18 @@ export default function App() {
     setDisassemblyProgress(0);
   };
 
+  const SCENE_PAGINATION = [
+    { id: 'scene-void', label: '01 / VOID' },
+    { id: 'scene-reveal', label: '02 / REVEAL' },
+    { id: 'scene-orbit', label: '03 / ORBIT' },
+    { id: 'scene-crystal', label: '04 / CRYSTAL' },
+    { id: 'scene-mechanism', label: '05 / CALIBRE' },
+    { id: 'scene-exploded', label: '06 / EXPLODED' },
+    { id: 'scene-craft', label: '07 / CRAFT' },
+    { id: 'scene-collection', label: '08 / COLLECTION' },
+    { id: 'scene-final', label: '09 / FINALE' }
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#070707] text-[#D6D0C5] select-none font-sans overflow-x-hidden">
       {/* Loading Intro Sequence */}
@@ -141,7 +153,7 @@ export default function App() {
         onCanvasPointerUp={handlePointerUp}
       />
 
-      {/* Geometric Balance Background Calibration Guides & Rings */}
+      {/* Geometric Balance Background Calibration Guides & Atmospheric Geometry */}
       <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
         {/* Subtle dot grid pattern */}
         <div className="absolute inset-0 bg-geometric-grid opacity-15" />
@@ -197,17 +209,17 @@ export default function App() {
         </div>
       </div>
 
-      {/* Fixed Geometric Right HUD (Active Axis & Disassembly Progress) */}
+      {/* Fixed Geometric Right HUD (Active Axis & Master Progress) */}
       <div className="fixed right-6 md:right-12 bottom-8 md:bottom-10 z-20 pointer-events-auto hidden md:flex flex-col items-end gap-1.5 text-right">
         <div className="text-[9px] tracking-[0.4em] font-medium font-mono text-[#D6D0C5]/80">
-          EXPERIENCE ACTIVE
+          CINEMA ENGINE ACTIVE
         </div>
         <div className="flex gap-3 items-center">
-          <span className="text-[9px] tracking-widest opacity-40 font-mono uppercase">Current Axis</span>
+          <span className="text-[9px] tracking-widest opacity-40 font-mono uppercase">Master Timeline</span>
           <span className="font-mono text-xs text-[#B08D57]">
             {isInspectMode
               ? `ORBIT: X:${Math.round(manualOrbit.x)}° Y:${Math.round(manualOrbit.y)}°`
-              : `Z: ${(1.0294 + scrollProgress * 0.12).toFixed(4)}`}
+              : `P: ${scrollProgress.toFixed(4)}`}
           </span>
         </div>
         <div className="w-40 md:w-48 h-[1px] bg-[#D6D0C5]/20 mt-2 relative overflow-hidden">
@@ -219,21 +231,10 @@ export default function App() {
       </div>
 
       {/* Fixed Geometric Right Pagination Micro-Dots */}
-      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-6 z-30 pointer-events-auto">
-        {[
-          { id: 'hero-section', label: '01 / HERO' },
-          { id: 'case-section', label: '02 / CHASSIS' },
-          { id: 'sapphire-section', label: '03 / SAPPHIRE' },
-          { id: 'precision-section', label: '04 / PRECISION' },
-          { id: 'movement-section', label: '05 / CALIBRE' },
-          { id: 'craft-section', label: '06 / CRAFT' },
-          { id: 'collection-section', label: '07 / COLLECTION' },
-          { id: 'configurator-section', label: '08 / STUDIO' },
-          { id: 'heritage-section', label: '09 / HERITAGE' },
-          { id: 'final-section', label: '10 / FINALE' }
-        ].map((section, idx) => {
-          const stepProgress = idx / 9;
-          const isActive = Math.abs(scrollProgress - stepProgress) < 0.08;
+      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-5 z-30 pointer-events-auto">
+        {SCENE_PAGINATION.map((section, idx) => {
+          const stepProgress = idx / (SCENE_PAGINATION.length - 1);
+          const isActive = Math.abs(scrollProgress - stepProgress) < 0.07;
           return (
             <button
               key={section.id}
@@ -244,7 +245,7 @@ export default function App() {
               <div
                 className={`transition-all duration-300 rounded-full ${
                   isActive
-                    ? 'w-1.5 h-1.5 bg-[#B08D57] shadow-[0_0_6px_#B08D57] scale-125'
+                    ? 'w-1.5 h-1.5 bg-[#B08D57] shadow-[0_0_8px_#B08D57] scale-125'
                     : 'w-1 h-1 bg-white/20 group-hover:bg-white/60'
                 }`}
               />
@@ -256,14 +257,14 @@ export default function App() {
         })}
       </div>
 
-      {/* Fixed Geometric Subtle Footer */}
+      {/* Fixed Subtle Luxury Footer */}
       <footer className="fixed bottom-0 left-0 w-full px-6 md:px-12 py-3 hidden lg:flex justify-between items-end z-20 pointer-events-none">
         <div className="flex flex-col gap-0.5">
           <div className="text-[10px] tracking-[0.2em] font-mono font-bold text-[#D6D0C5]/90 uppercase">
-            {currentModel.name} 01
+            {currentModel.name}
           </div>
           <div className="text-[9px] tracking-[0.1em] text-[#D6D0C5]/40 font-mono italic uppercase">
-            AUTOMATIC MECHANICAL SERIES
+            GENEVA MANUFACTURE • CALIBRE NX-901
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -277,7 +278,7 @@ export default function App() {
       {/* Bottom Vignette Layer */}
       <div className="fixed bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#070707] to-transparent pointer-events-none z-10" />
 
-      {/* Continuous Editorial Scroll Storyline */}
+      {/* Continuous Editorial 9-Scene Scroll Storyline */}
       <ScrollStory
         currentModel={currentModel}
         onSelectModel={(id) => setCurrentModelId(id)}

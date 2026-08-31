@@ -5,6 +5,8 @@ import { Lighting } from './Lighting';
 import { Environment } from './Environment';
 import { WatchModel } from './WatchModel';
 import { CameraRig } from './CameraRig';
+import { SpatialCollection } from './SpatialCollection';
+import { MechanicalAnnotations } from './MechanicalAnnotations';
 import { WatchModelSpec } from '../types';
 
 interface SceneProps {
@@ -30,6 +32,9 @@ export const Scene: React.FC<SceneProps> = ({
   onCanvasPointerMove,
   onCanvasPointerUp
 }) => {
+  // During collection stage (0.78 - 0.88), hide single watch or let collection take over
+  const isCollectionStage = scrollProgress >= 0.78 && scrollProgress <= 0.88;
+
   return (
     <div
       className="fixed inset-0 w-full h-full pointer-events-auto z-0"
@@ -41,7 +46,7 @@ export const Scene: React.FC<SceneProps> = ({
       <Canvas
         shadows
         dpr={[1, Math.min(window.devicePixelRatio || 1, 2)]}
-        camera={{ position: [0, 0, 5.4], fov: 42, near: 0.1, far: 50 }}
+        camera={{ position: [0, -0.28, 7.5], fov: 38, near: 0.1, far: 60 }}
         gl={{
           antialias: true,
           alpha: true,
@@ -53,25 +58,41 @@ export const Scene: React.FC<SceneProps> = ({
         }}
       >
         <Suspense fallback={null}>
+          {/* Master Cinematic Camera Rig */}
           <CameraRig
             scrollProgress={scrollProgress}
             isInspectMode={isInspectMode}
             manualOrbit={manualOrbit}
           />
 
+          {/* Master 9-Scene Studio Lighting */}
           <Lighting
             scrollProgress={scrollProgress}
             isLuminescentMode={isLuminescentMode}
           />
 
+          {/* Ambient Micro-Atmosphere & Soft Ground Shadows */}
           <Environment scrollProgress={scrollProgress} />
 
-          <WatchModel
-            model={model}
+          {/* Primary Interactive Watch Engine */}
+          {!isCollectionStage && (
+            <WatchModel
+              model={model}
+              scrollProgress={scrollProgress}
+              disassemblyProgress={disassemblyProgress}
+              isLuminescentMode={isLuminescentMode}
+            />
+          )}
+
+          {/* Spatial 3D Collection Showcase (Scene 08: 0.78 -> 0.88) */}
+          <SpatialCollection
             scrollProgress={scrollProgress}
-            disassemblyProgress={disassemblyProgress}
+            currentModelId={model.id}
             isLuminescentMode={isLuminescentMode}
           />
+
+          {/* Spatial 3D Micro-Annotations (Scene 05 & 06) */}
+          <MechanicalAnnotations scrollProgress={scrollProgress} />
         </Suspense>
       </Canvas>
     </div>

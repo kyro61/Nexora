@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #070707;
+    --text-main: #D6D0C5;
+    --gold-accent: #B08D57;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #070707 80%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-mono {
+    font-family: 'Space Grotesk', monospace;
+  }
+}
+
+/* Geometric Dot Grid Pattern */
+.bg-geometric-grid {
+  background-image: radial-gradient(#B08D57 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #070707 80%);
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070707;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242426;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B08D57;
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

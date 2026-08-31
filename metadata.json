@@ -1,0 +1,6 @@
+{
+  "name": "NOXORA — Time, Refined",
+  "description": "NOXORA creates precision mechanical timepieces for those who measure moments differently.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

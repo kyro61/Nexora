@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import {
-  ChevronDown,
   ArrowRight,
-  Shield,
-  Layers,
-  Sliders,
   Maximize2,
   ExternalLink,
   CheckCircle,
-  Eye,
-  RotateCcw,
-  Sparkles
+  Sparkles,
+  Layers,
+  Compass,
+  Cpu,
+  Eye
 } from 'lucide-react';
-import { WATCH_COLLECTION, TECHNICAL_CALLOUTS, CRAFTSMANSHIP_PILLARS } from '../data/watchData';
+import { WATCH_COLLECTION, CRAFTSMANSHIP_PILLARS } from '../data/watchData';
 import { WatchModelSpec } from '../types';
 
 interface ScrollStoryProps {
@@ -36,24 +34,22 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
   onOpenProductModal,
   onOpenConsultation,
   disassemblyProgress,
-  onSetDisassemblyProgress,
   isInspectMode,
   onToggleInspect,
   isLuminescentMode,
   onToggleLume,
-  scrollProgress,
-  onResetCamera
+  scrollProgress
 }) => {
   const [activeCraftTab, setActiveCraftTab] = useState(0);
 
   return (
     <div className="relative z-10 w-full pointer-events-none">
       {/* ========================================================================= */}
-      {/* SCENE 01 — VOID (0.00 -> 0.08)                                            */}
-      {/* Starts in near darkness. Thin rim light revealing silhouette.              */}
+      {/* CHAPTER 01 — THE VOID (0.00 -> 0.08)                                      */}
+      {/* Starts almost completely black. Subtle silhouette revealed by rim light.  */}
       {/* ========================================================================= */}
       <section
-        id="scene-void"
+        id="chapter-01-void"
         className="min-h-screen flex flex-col justify-between items-center text-center px-6 pt-32 pb-16 relative"
       >
         <div className="relative z-20 flex flex-col items-center max-w-4xl mx-auto pt-16 space-y-6">
@@ -82,16 +78,16 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 02 — FIRST REVEAL (0.08 -> 0.18)                                    */}
+      {/* CHAPTER 02 — REVEAL (0.08 -> 0.18)                                        */}
       {/* Camera approaches, watch rotates ~25 deg, lighting sweeps across metal.   */}
       {/* ========================================================================= */}
       <section
-        id="scene-reveal"
+        id="chapter-02-reveal"
         className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-24 relative"
       >
         <div className="max-w-4xl space-y-6 pointer-events-auto">
           <div className="inline-block text-[10px] font-mono tracking-[0.4em] text-[#B08D57] uppercase bg-[#070707]/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#B08D57]/30">
-            01 / FIRST REVEAL
+            CHAPTER 02 / REVEAL
           </div>
 
           <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-light tracking-tight leading-tight text-[#D6D0C5] select-none drop-shadow-[0_15px_50px_rgba(0,0,0,0.95)]">
@@ -106,17 +102,17 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 03 — ORBIT (0.18 -> 0.30)                                           */}
-      {/* Camera orbits the watch: case thickness, crown, lugs, side profile.       */}
+      {/* CHAPTER 03 — ORBIT (0.18 -> 0.30)                                         */}
+      {/* Camera orbits the watch: side profile, crown, lugs, bezel thickness.      */}
       {/* ========================================================================= */}
       <section
-        id="scene-orbit"
+        id="chapter-03-orbit"
         className="min-h-screen flex items-center justify-start px-6 md:px-20 py-24"
       >
         <div className="max-w-lg bg-[#070707]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            02 / SPATIAL ORBIT & ARCHITECTURE
+            CHAPTER 03 / SPATIAL ORBIT
           </div>
           <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             Sculpted Geometry. Monobloc Strength.
@@ -155,17 +151,17 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 04 — ENTER THE WATCH (0.30 -> 0.42)                                 */}
-      {/* Camera moves toward dial, penetrates sapphire crystal into the movement.  */}
+      {/* CHAPTER 04 — ENTER THE WATCH (0.30 -> 0.42)                               */}
+      {/* Sapphire crystal fills viewport, camera physically penetrates into dial.  */}
       {/* ========================================================================= */}
       <section
-        id="scene-crystal"
+        id="chapter-04-enter"
         className="min-h-screen flex items-center justify-end px-6 md:px-20 py-24"
       >
         <div className="max-w-lg bg-[#070707]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            03 / OPTICAL PENETRATION
+            CHAPTER 04 / OPTICAL PENETRATION
           </div>
           <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             Double-Domed Sapphire Crystal.
@@ -176,7 +172,7 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
 
           <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
             <span className="text-xs font-mono text-[#B08D57] tracking-widest uppercase">
-              ENTERING INTERNAL MECHANICAL HEART...
+              PHYSICALLY TRAVELING THROUGH CRYSTAL...
             </span>
             <ArrowRight className="w-4 h-4 text-[#B08D57] animate-pulse" />
           </div>
@@ -184,17 +180,17 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 05 — THE MECHANISM (0.42 -> 0.56)                                   */}
-      {/* Inside the movement. Gears rotate, balance oscillates, jewels glisten.    */}
+      {/* CHAPTER 05 — INSIDE THE MOVEMENT (0.42 -> 0.55)                           */}
+      {/* Inside movement. Oscillating balance, gears, jewels, bridges, rotor.       */}
       {/* ========================================================================= */}
       <section
-        id="scene-mechanism"
+        id="chapter-05-movement"
         className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-24"
       >
         <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-[#B08D57]/30 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            04 / THE MECHANICAL HEART
+            CHAPTER 05 / INSIDE THE MOVEMENT
           </div>
           <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             In-House Calibre NX-901 Engine.
@@ -207,25 +203,25 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
               <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.powerReserve}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
-                POWER RESERVE
+                72 HOUR POWER RESERVE
               </div>
             </div>
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
               <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.frequency}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
-                FREQUENCY (4 HZ)
+                28,800 VPH (4 HZ)
               </div>
             </div>
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
               <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">{currentModel.jewels}</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
-                SYNTHETIC RUBY JEWELS
+                31 SYNTHETIC JEWELS
               </div>
             </div>
             <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5">
-              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">COSC</div>
+              <div className="text-2xl md:text-3xl font-serif text-[#B08D57]">AUTOMATIC</div>
               <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest mt-1">
-                MASTER CHRONOMETER
+                MANUFACTURE CALIBRE
               </div>
             </div>
           </div>
@@ -233,39 +229,67 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 06 — EXPLODED WATCH (0.56 -> 0.68)                                   */}
-      {/* Physical 3D vector separation of watch components in alignment.            */}
+      {/* CHAPTER 06 — MACRO JOURNEY (0.55 -> 0.62)                                 */}
+      {/* Microscopic travel past gear teeth, jewels, springs, bridges, screws.     */}
       {/* ========================================================================= */}
       <section
-        id="scene-exploded"
+        id="chapter-06-macro"
+        className="min-h-screen flex items-center justify-start px-6 md:px-20 py-24"
+      >
+        <div className="max-w-lg bg-[#070707]/80 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.85)] relative overflow-hidden">
+          <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
+          <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
+            CHAPTER 06 / MACRO JOURNEY
+          </div>
+          <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
+            Microscopic Architecture.
+          </h3>
+          <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
+            Navigating between the gear teeth, ruby jewel bushings, blued steel screws, and the breathing spiral hairspring. Experience mechanical horology at sub-millimeter scale.
+          </p>
+
+          <div className="mt-6 pt-6 border-t border-white/10 flex items-center space-x-3 text-xs font-mono text-[#B08D57]">
+            <Compass className="w-4 h-4" />
+            <span>SUB-MICRON TOLERANCES (±0.001 MM)</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* CHAPTER 07 — EXPLODED VIEW (0.62 -> 0.72)                                 */}
+      {/* Physical 3D vector separation of watch components in spatial alignment.   */}
+      {/* ========================================================================= */}
+      <section
+        id="chapter-07-exploded"
         className="min-h-screen flex flex-col justify-center items-end px-6 md:px-20 py-24"
       >
         <div className="max-w-xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-12 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_80px_rgba(0,0,0,0.9)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            05 / EXPLODED ARCHITECTURE
+            CHAPTER 07 / EXPLODED VIEW
           </div>
           <h3 className="text-3xl sm:text-4xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             THE ART OF PRECISION.
           </h3>
           <p className="text-sm text-[#D6D0C5]/70 font-light leading-relaxed">
-            Every component is engineered along precise geometric vectors. Sapphire crystal, cerachrom bezel, dial assembly, hands, calibre movement, case chassis, and exhibition caseback maintain perfect axial harmony.
+            Every component separates along precise geometric vectors. Sapphire crystal, bezel, hands, dial, calibre movement, case chassis, and caseback maintain spatial alignment in full 3D space.
           </p>
 
           <div className="space-y-3 mt-6 pt-6 border-t border-white/10">
             {[
               { num: '01', name: 'Sapphire Crystal (Double Domed)' },
-              { num: '02', name: 'Cerachrom Bezel Ring & Tachymeter' },
-              { num: '03', name: 'Faceted Hands & Sweeping Chrono Needle' },
-              { num: '04', name: 'Multi-Tiered Guilloché Dial Plate' },
-              { num: '05', name: 'Calibre NX-901 Mechanical Engine' },
-              { num: '06', name: 'Monobloc 904L / 18k Rose Gold Case' },
-              { num: '07', name: 'Exhibition Sapphire Caseback & Rotor' }
+              { num: '02', name: 'Cerachrom Bezel Ring' },
+              { num: '03', name: 'Faceted Dauphine Hands' },
+              { num: '04', name: 'Multi-Tiered Guilloché Dial' },
+              { num: '05', name: 'Calibre NX-901 Movement' },
+              { num: '06', name: 'Monobloc Chassis & Lugs' },
+              { num: '07', name: 'Exhibition Caseback & Rotor' },
+              { num: '08', name: 'Integrated Hand-Stitched Strap' }
             ].map((part, pIdx) => (
               <div key={pIdx} className="flex items-center justify-between text-xs font-mono text-[#D6D0C5]/80 py-1 border-b border-white/5">
                 <span className="text-[#B08D57]">{part.num}</span>
                 <span>{part.name}</span>
-                <span className="text-[10px] text-white/40">Z-AXIS 3D</span>
+                <span className="text-[10px] text-white/40">3D VECTOR</span>
               </div>
             ))}
           </div>
@@ -273,23 +297,23 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 07 — CRAFTSMANSHIP (0.68 -> 0.78)                                   */}
-      {/* Watch reconstructs. Warm lighting. CRAFTED BY HAND editorial statements.   */}
+      {/* CHAPTER 08 — RECONSTRUCTION (0.72 -> 0.80)                                */}
+      {/* Watch reconstructs smoothly. Warm golden atelier lighting.                */}
       {/* ========================================================================= */}
       <section
-        id="scene-craft"
+        id="chapter-08-reconstruction"
         className="min-h-screen flex flex-col justify-center px-6 md:px-20 py-24"
       >
         <div className="max-w-3xl bg-[#070707]/80 backdrop-blur-xl p-8 md:p-14 rounded-2xl border border-white/10 pointer-events-auto shadow-[0_30px_90px_rgba(0,0,0,0.95)] relative overflow-hidden">
           <div className="w-12 h-[1px] bg-[#B08D57] mb-4" />
           <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-            06 / SAVOIR-FAIRE & ATELIER
+            CHAPTER 08 / RECONSTRUCTION
           </div>
           <h3 className="text-4xl sm:text-5xl font-serif text-[#D6D0C5] mt-2 mb-4 leading-tight">
             CRAFTED BY HAND.
           </h3>
           <p className="text-sm md:text-base text-[#D6D0C5]/80 font-light leading-relaxed mb-8">
-            Every NOXORA timepiece requires over 240 hours of manual decoration, hand-beveled chamfering, wooden wheel polishing, and master horologist calibration in our Geneva workshop.
+            Every NOXORA timepiece returns into seamless physical unity, requiring over 240 hours of manual decoration, hand-beveled chamfering, and master horologist calibration in our Geneva workshop.
           </p>
 
           {/* Craftsmanship Tabs */}
@@ -298,7 +322,7 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
               <button
                 key={pillar.number}
                 onClick={() => setActiveCraftTab(idx)}
-                className={`text-left p-3 rounded-lg border transition-all duration-300 ${
+                className={`text-left p-3 rounded-lg border transition-all duration-300 cursor-pointer ${
                   activeCraftTab === idx
                     ? 'border-[#B08D57] bg-[#B08D57]/10 text-white'
                     : 'border-white/5 bg-white/[0.02] text-white/50 hover:border-white/20'
@@ -336,36 +360,36 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 08 — COLLECTION (0.78 -> 0.88)                                      */}
-      {/* 3 luxury timepieces exist in the same 3D environment with camera focus.   */}
+      {/* CHAPTER 09 — COLLECTION (0.80 -> 0.90)                                    */}
+      {/* 4 luxury timepieces spatially arranged in 3D: AURELIS, OBSIDIAN, VANTAGE, ÉCLAT */}
       {/* ========================================================================= */}
       <section
-        id="scene-collection"
+        id="chapter-09-collection"
         className="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-24"
       >
-        <div className="w-full max-w-6xl space-y-8 pointer-events-auto">
+        <div className="w-full max-w-7xl space-y-8 pointer-events-auto">
           <div className="text-center space-y-3">
             <div className="text-[10px] font-mono tracking-[0.35em] text-[#B08D57] uppercase">
-              07 / SPATIAL COLLECTION
+              CHAPTER 09 / THE SPATIAL COLLECTION
             </div>
             <h3 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#D6D0C5]">
-              THE TIMEPIECE ATELIER
+              TIMEPIECES IN SPACE
             </h3>
             <p className="text-sm text-[#D6D0C5]/60 font-light max-w-xl mx-auto">
-              Three horological philosophies forged from 18k Rose Gold, DLC Grade 5 Titanium, and High-Frequency 904L Steel.
+              Four distinct manufacture expressions forged from 18k Rose Gold, DLC Grade 5 Titanium, High-Frequency 904L Steel, and Pure Synthetic Sapphire.
             </p>
           </div>
 
           {/* Timepiece Selection Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-            {WATCH_COLLECTION.slice(0, 3).map((watch) => {
-              const isSelected加快 = watch.id === currentModel.id;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6">
+            {WATCH_COLLECTION.map((watch) => {
+              const isSelected = watch.id === currentModel.id;
               return (
                 <div
                   key={watch.id}
                   onClick={() => onSelectModel(watch.id)}
-                  className={`bg-[#070707]/80 backdrop-blur-xl p-6 rounded-2xl border transition-all duration-500 cursor-pointer group flex flex-col justify-between hover:-translate-y-2 relative overflow-hidden ${
-                    isSelected加快
+                  className={`bg-[#070707]/85 backdrop-blur-xl p-6 rounded-2xl border transition-all duration-500 cursor-pointer group flex flex-col justify-between hover:-translate-y-2 relative overflow-hidden ${
+                    isSelected
                       ? 'border-[#B08D57] shadow-[0_0_30px_rgba(176,141,87,0.3)] bg-[#111111]/90'
                       : 'border-white/10 hover:border-white/30'
                   }`}
@@ -375,14 +399,14 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
                       <span className="text-[10px] font-mono text-[#B08D57] uppercase tracking-widest">
                         {watch.subtitle}
                       </span>
-                      {isSelected加快 && (
+                      {isSelected && (
                         <span className="flex items-center text-[9px] font-mono text-[#B08D57] gap-1">
                           <CheckCircle className="w-3 h-3" /> ACTIVE IN 3D
                         </span>
                       )}
                     </div>
 
-                    <h4 className="text-2xl font-serif text-[#D6D0C5] group-hover:text-white transition-colors">
+                    <h4 className="text-xl font-serif text-[#D6D0C5] group-hover:text-white transition-colors">
                       {watch.name}
                     </h4>
 
@@ -391,9 +415,9 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
                     </p>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+                  <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
                     <div>
-                      <div className="text-lg font-serif text-[#B08D57]">{watch.price}</div>
+                      <div className="text-base font-serif text-[#B08D57]">{watch.price}</div>
                       <div className="text-[9px] font-mono text-white/40 uppercase tracking-widest">
                         {watch.caseMaterial.split(',')[0]}
                       </div>
@@ -404,7 +428,7 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
                         e.stopPropagation();
                         onOpenProductModal(watch);
                       }}
-                      className="p-2 rounded-full border border-white/10 hover:border-[#B08D57] hover:text-[#B08D57] transition-colors"
+                      className="p-2 rounded-full border border-white/10 hover:border-[#B08D57] hover:text-[#B08D57] transition-colors cursor-pointer"
                       aria-label="View Specifications"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -418,14 +442,14 @@ export const ScrollStory: React.FC<ScrollStoryProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SCENE 09 — FINAL HERO (0.88 -> 1.00)                                      */}
-      {/* Darkness surrounds watch. Final iconic commercial frame & luxury CTAs.    */}
+      {/* CHAPTER 10 — FINAL HERO (0.90 -> 1.00)                                    */}
+      {/* Deep luxury darkness surrounds watch. Commercial finale & luxury CTAs.    */}
       {/* ========================================================================= */}
       <section
-        id="scene-final"
+        id="chapter-10-final"
         className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-24 relative"
       >
-        <div className="max-w-3xl space-y-6 pointer-events-auto bg-[#070707]/70 backdrop-blur-xl p-8 md:p-14 rounded-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.95)] relative overflow-hidden">
+        <div className="max-w-3xl space-y-6 pointer-events-auto bg-[#070707]/75 backdrop-blur-xl p-8 md:p-14 rounded-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.95)] relative overflow-hidden">
           <div className="w-16 h-[1px] bg-[#B08D57] mx-auto" />
           <div className="text-[10px] md:text-xs font-mono tracking-[0.4em] text-[#B08D57] uppercase">
             NOXORA MANUFACTURE GENÈVE

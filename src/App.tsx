@@ -26,7 +26,7 @@ export default function App() {
   const [consultationModelId, setConsultationModelId] = useState('aurelis');
   const [productModalWatch, setProductModalWatch] = useState<WatchModelSpec | null>(null);
 
-  // Manual 3D Orbit State
+  // Manual 3D Orbit State for Inspection Mode
   const [manualOrbit, setManualOrbit] = useState({ x: 0, y: 15, zoom: 1.0 });
   const isDragging = useRef(false);
   const previousPointerPos = useRef({ x: 0, y: 0 });
@@ -56,13 +56,18 @@ export default function App() {
         const progress = Math.min(1, Math.max(0, window.scrollY / totalScroll));
         setScrollProgress(progress);
 
-        // Map scroll progress to Scene 06 Exploded Watch (0.56 -> 0.68)
+        // Map scroll progress to Chapter 07 Exploded View (0.62 -> 0.72) and Chapter 08 Reconstruction (0.72 -> 0.80)
         if (!isInspectMode) {
-          if (progress >= 0.56 && progress <= 0.72) {
-            const rangeProgress = (progress - 0.56) / 0.16;
-            // Expand to peak at 0.62, then reconstruct by 0.72 (Scene 07 Craftsmanship)
-            const explode = rangeProgress < 0.5 ? rangeProgress * 2 : (1 - rangeProgress) * 2;
-            setDisassemblyProgress(Math.max(0, Math.min(1, explode)));
+          if (progress >= 0.60 && progress <= 0.80) {
+            if (progress <= 0.70) {
+              // Expand outward to full disassembly
+              const explodeT = (progress - 0.60) / 0.10;
+              setDisassemblyProgress(Math.max(0, Math.min(1, explodeT)));
+            } else {
+              // Reconstruct smoothly back to assembled state
+              const reconstructT = (progress - 0.70) / 0.10;
+              setDisassemblyProgress(Math.max(0, Math.min(1, 1 - reconstructT)));
+            }
           } else {
             setDisassemblyProgress(0);
           }
@@ -123,16 +128,18 @@ export default function App() {
     setDisassemblyProgress(0);
   };
 
+  // 10-Chapter Master Pagination
   const SCENE_PAGINATION = [
-    { id: 'scene-void', label: '01 / VOID' },
-    { id: 'scene-reveal', label: '02 / REVEAL' },
-    { id: 'scene-orbit', label: '03 / ORBIT' },
-    { id: 'scene-crystal', label: '04 / CRYSTAL' },
-    { id: 'scene-mechanism', label: '05 / CALIBRE' },
-    { id: 'scene-exploded', label: '06 / EXPLODED' },
-    { id: 'scene-craft', label: '07 / CRAFT' },
-    { id: 'scene-collection', label: '08 / COLLECTION' },
-    { id: 'scene-final', label: '09 / FINALE' }
+    { id: 'chapter-01-void', label: '01 / VOID' },
+    { id: 'chapter-02-reveal', label: '02 / REVEAL' },
+    { id: 'chapter-03-orbit', label: '03 / ORBIT' },
+    { id: 'chapter-04-enter', label: '04 / CRYSTAL' },
+    { id: 'chapter-05-movement', label: '05 / CALIBRE' },
+    { id: 'chapter-06-macro', label: '06 / MACRO' },
+    { id: 'chapter-07-exploded', label: '07 / EXPLODED' },
+    { id: 'chapter-08-reconstruction', label: '08 / CRAFT' },
+    { id: 'chapter-09-collection', label: '09 / COLLECTION' },
+    { id: 'chapter-10-final', label: '10 / FINALE' }
   ];
 
   return (
@@ -231,15 +238,15 @@ export default function App() {
       </div>
 
       {/* Fixed Geometric Right Pagination Micro-Dots */}
-      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-5 z-30 pointer-events-auto">
+      <div className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-4 z-30 pointer-events-auto">
         {SCENE_PAGINATION.map((section, idx) => {
           const stepProgress = idx / (SCENE_PAGINATION.length - 1);
-          const isActive = Math.abs(scrollProgress - stepProgress) < 0.07;
+          const isActive = Math.abs(scrollProgress - stepProgress) < 0.06;
           return (
             <button
               key={section.id}
               onClick={() => handleNavigateToSection(section.id)}
-              className="group relative flex items-center justify-center p-1 focus:outline-none"
+              className="group relative flex items-center justify-center p-1 focus:outline-none cursor-pointer"
               aria-label={section.label}
             >
               <div
@@ -278,7 +285,7 @@ export default function App() {
       {/* Bottom Vignette Layer */}
       <div className="fixed bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#070707] to-transparent pointer-events-none z-10" />
 
-      {/* Continuous Editorial 9-Scene Scroll Storyline */}
+      {/* Continuous Editorial 10-Chapter Scroll Storyline */}
       <ScrollStory
         currentModel={currentModel}
         onSelectModel={(id) => setCurrentModelId(id)}

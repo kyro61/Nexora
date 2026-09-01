@@ -12,16 +12,24 @@
     background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #070707 80%);
     background-attachment: fixed;
     color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: 'Cinzel', serif;
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Prata', 'Cinzel', serif;
+  }
+
+  .font-sans {
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+
+  .font-ui {
+    font-family: 'Poppins', sans-serif;
   }
 
   .font-mono {
-    font-family: 'Space Grotesk', monospace;
+    font-family: 'Space Grotesk', 'Poppins', monospace;
   }
 }
 

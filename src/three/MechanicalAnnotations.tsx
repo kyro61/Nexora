@@ -6,22 +6,22 @@ interface MechanicalAnnotationsProps {
 }
 
 export const MechanicalAnnotations: React.FC<MechanicalAnnotationsProps> = ({ scrollProgress }) => {
-  // Mechanism scene is 0.42 -> 0.56
-  const isMechanismScene = scrollProgress >= 0.40 && scrollProgress <= 0.57;
-  // Exploded scene is 0.56 -> 0.68
-  const isExplodedScene = scrollProgress >= 0.57 && scrollProgress <= 0.69;
+  // Chapter 05 (Inside Movement) & Chapter 06 (Macro Journey): 0.42 -> 0.62
+  const isMovementScene = scrollProgress >= 0.41 && scrollProgress <= 0.62;
+  // Chapter 07 (Exploded View): 0.62 -> 0.72
+  const isExplodedScene = scrollProgress > 0.62 && scrollProgress <= 0.73;
 
-  if (!isMechanismScene && !isExplodedScene) return null;
+  if (!isMovementScene && !isExplodedScene) return null;
 
   return (
     <group name="Spatial3DAnnotations">
-      {/* SCENE 05 LABELS (Inside Calibre NX-901) */}
-      {isMechanismScene && (
+      {/* CHAPTER 05 & 06 LABELS (Inside Mechanical Movement) */}
+      {isMovementScene && (
         <>
-          {/* Balance Wheel */}
-          <group position={[0.22, -0.38, 0.2]}>
-            <Html distanceFactor={4} center className="pointer-events-none select-none">
-              <div className="flex items-center gap-2 bg-[#070707]/85 backdrop-blur-md border border-[#B08D57]/40 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
+          {/* 01: BALANCE WHEEL / 28,800 VPH */}
+          <group position={[0.22, -0.38, 0.18]}>
+            <Html distanceFactor={3.6} center className="pointer-events-none select-none">
+              <div className="flex items-center gap-2 bg-[#070707]/90 backdrop-blur-md border border-[#B08D57]/60 px-3 py-1.5 rounded shadow-[0_4px_25px_rgba(0,0,0,0.9)] animate-fadeIn">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#B08D57] animate-ping" />
                 <div className="text-left">
                   <div className="text-[8px] font-mono text-[#B08D57] tracking-widest uppercase">
@@ -35,34 +35,51 @@ export const MechanicalAnnotations: React.FC<MechanicalAnnotationsProps> = ({ sc
             </Html>
           </group>
 
-          {/* Mainspring Barrel Power Reserve */}
-          <group position={[0.42, 0.38, 0.15]}>
-            <Html distanceFactor={4} center className="pointer-events-none select-none">
-              <div className="flex items-center gap-2 bg-[#070707]/85 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/60" />
+          {/* 02: 72 HOUR POWER RESERVE */}
+          <group position={[0.42, 0.38, 0.14]}>
+            <Html distanceFactor={3.6} center className="pointer-events-none select-none">
+              <div className="flex items-center gap-2 bg-[#070707]/90 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded shadow-[0_4px_25px_rgba(0,0,0,0.9)] animate-fadeIn">
+                <div className="w-1.5 h-1.5 rounded-full bg-white/70" />
                 <div className="text-left">
-                  <div className="text-[8px] font-mono text-[#D6D0C5]/60 tracking-widest uppercase">
-                    POWER RESERVE
+                  <div className="text-[8px] font-mono text-[#D6D0C5]/70 tracking-widest uppercase">
+                    72 HOUR POWER RESERVE
                   </div>
                   <div className="text-[10px] font-serif font-bold text-white tracking-wider">
-                    72 HOURS
+                    TWIN-BARREL KINEMATICS
                   </div>
                 </div>
               </div>
             </Html>
           </group>
 
-          {/* Synthetic Ruby Jewels */}
-          <group position={[-0.28, 0.18, 0.12]}>
-            <Html distanceFactor={4} center className="pointer-events-none select-none">
-              <div className="flex items-center gap-2 bg-[#070707]/85 backdrop-blur-md border border-[#E0115F]/40 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
+          {/* 03: 31 JEWELS (Synthetic Ruby Bearings) */}
+          <group position={[-0.26, 0.22, 0.12]}>
+            <Html distanceFactor={3.6} center className="pointer-events-none select-none">
+              <div className="flex items-center gap-2 bg-[#070707]/90 backdrop-blur-md border border-[#E0115F]/50 px-3 py-1.5 rounded shadow-[0_4px_25px_rgba(0,0,0,0.9)] animate-fadeIn">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#E0115F]" />
                 <div className="text-left">
                   <div className="text-[8px] font-mono text-[#E0115F] tracking-widest uppercase">
-                    SYNTHETIC RUBY
+                    31 JEWELS
                   </div>
                   <div className="text-[10px] font-serif font-bold text-white tracking-wider">
-                    31 JEWELS
+                    SYNTHETIC CORUNDUM
+                  </div>
+                </div>
+              </div>
+            </Html>
+          </group>
+
+          {/* 04: AUTOMATIC CALIBRE */}
+          <group position={[-0.24, -0.22, 0.1]}>
+            <Html distanceFactor={3.6} center className="pointer-events-none select-none">
+              <div className="flex items-center gap-2 bg-[#070707]/90 backdrop-blur-md border border-[#B08D57]/40 px-3 py-1.5 rounded shadow-[0_4px_25px_rgba(0,0,0,0.9)] animate-fadeIn">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#B08D57]" />
+                <div className="text-left">
+                  <div className="text-[8px] font-mono text-[#B08D57] tracking-widest uppercase">
+                    AUTOMATIC CALIBRE
+                  </div>
+                  <div className="text-[10px] font-serif font-bold text-white tracking-wider">
+                    IN-HOUSE NX-901
                   </div>
                 </div>
               </div>
@@ -71,12 +88,12 @@ export const MechanicalAnnotations: React.FC<MechanicalAnnotationsProps> = ({ sc
         </>
       )}
 
-      {/* SCENE 06 LABELS (Exploded Architecture) */}
+      {/* CHAPTER 07 LABELS (Exploded Disassembly) */}
       {isExplodedScene && (
         <>
           {/* Sapphire Crystal */}
-          <group position={[0.8, 1.8, 0.6]}>
-            <Html distanceFactor={5} center className="pointer-events-none select-none">
+          <group position={[0.8, 1.6, 0.6]}>
+            <Html distanceFactor={4.5} center className="pointer-events-none select-none">
               <div className="bg-[#070707]/90 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
                 <div className="text-[8px] font-mono text-[#B08D57] tracking-widest uppercase">
                   01 / OPTICS
@@ -88,26 +105,26 @@ export const MechanicalAnnotations: React.FC<MechanicalAnnotationsProps> = ({ sc
             </Html>
           </group>
 
-          {/* Bezel Ring */}
+          {/* Bezel */}
           <group position={[-1.2, 0.8, 0.4]}>
-            <Html distanceFactor={5} center className="pointer-events-none select-none">
+            <Html distanceFactor={4.5} center className="pointer-events-none select-none">
               <div className="bg-[#070707]/90 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
                 <div className="text-[8px] font-mono text-[#B08D57] tracking-widest uppercase">
                   02 / BEZEL
                 </div>
                 <div className="text-[10px] font-serif text-white uppercase">
-                  CERACHROM CERAMIC RING
+                  CERACHROM RING
                 </div>
               </div>
             </Html>
           </group>
 
-          {/* Manufacture Calibre */}
+          {/* Calibre Engine */}
           <group position={[1.4, -0.6, 0.0]}>
-            <Html distanceFactor={5} center className="pointer-events-none select-none">
-              <div className="bg-[#070707]/90 backdrop-blur-md border border-[#B08D57]/40 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
+            <Html distanceFactor={4.5} center className="pointer-events-none select-none">
+              <div className="bg-[#070707]/90 backdrop-blur-md border border-[#B08D57]/50 px-3 py-1.5 rounded shadow-[0_4px_20px_rgba(0,0,0,0.8)] animate-fadeIn">
                 <div className="text-[8px] font-mono text-[#B08D57] tracking-widest uppercase">
-                  03 / IN-HOUSE ENGINE
+                  03 / MANUFACTURE
                 </div>
                 <div className="text-[10px] font-serif text-white uppercase">
                   CALIBRE NX-901
